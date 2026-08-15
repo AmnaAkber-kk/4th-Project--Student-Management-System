@@ -1,0 +1,275 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "7eaf8dd6-39f5-46ea-854f-2b4f83b67e88",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/markdown": [
+       "#    Student Management System\n"
+      ],
+      "text/plain": [
+       "<IPython.core.display.Markdown object>"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    }
+   ],
+   "source": [
+    "%%markdown\n",
+    "#    Student Management System"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "id": "6736562e-f8cb-4eb6-80d4-ecdd217c7261",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "========================================================================\n",
+      "                     Student Management System                          \n",
+      "=========================================================================\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(\"========================================================================\")\n",
+    "print(\"                     Student Management System                          \")\n",
+    "print(\"=========================================================================\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "id": "c33361de-aaf7-4a60-954d-c7ad4280db85",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\n",
+      "1. Add Student\n",
+      "2. Update Student\n",
+      "3. View All Students\n",
+      "4. Exit\n"
+     ]
+    },
+    {
+     "name": "stdin",
+     "output_type": "stream",
+     "text": [
+      "Enter your choice:  1\n",
+      "Enter Student ID:  2345\n",
+      "Enter Student Name:  amna\n",
+      "Enter Student Age:  23\n",
+      "Enter Student Course:  python\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Student added successfully\n",
+      "\n",
+      "1. Add Student\n",
+      "2. Update Student\n",
+      "3. View All Students\n",
+      "4. Exit\n"
+     ]
+    },
+    {
+     "name": "stdin",
+     "output_type": "stream",
+     "text": [
+      "Enter your choice:  2\n",
+      "Enter Student ID:  345\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Student ID not found\n",
+      "\n",
+      "1. Add Student\n",
+      "2. Update Student\n",
+      "3. View All Students\n",
+      "4. Exit\n"
+     ]
+    },
+    {
+     "name": "stdin",
+     "output_type": "stream",
+     "text": [
+      "Enter your choice:  hamna\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Invalid choice\n",
+      "\n",
+      "1. Add Student\n",
+      "2. Update Student\n",
+      "3. View All Students\n",
+      "4. Exit\n"
+     ]
+    },
+    {
+     "name": "stdin",
+     "output_type": "stream",
+     "text": [
+      "Enter your choice:  3\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "ID: 2345\n",
+      "Name: amna\n",
+      "Age: 23\n",
+      "Course: python\n",
+      "\n",
+      "1. Add Student\n",
+      "2. Update Student\n",
+      "3. View All Students\n",
+      "4. Exit\n"
+     ]
+    },
+    {
+     "name": "stdin",
+     "output_type": "stream",
+     "text": [
+      "Enter your choice:  4\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Program ended\n"
+     ]
+    }
+   ],
+   "source": [
+    "class StudentManagementSystem:\n",
+    "\n",
+    "    def __init__(self):\n",
+    "        self.students = []\n",
+    "\n",
+    "    def add_student(self):\n",
+    "        student_id = input(\"Enter Student ID: \")\n",
+    "        name = input(\"Enter Student Name: \")\n",
+    "        age = input(\"Enter Student Age: \")\n",
+    "        course = input(\"Enter Student Course: \")\n",
+    "\n",
+    "        student = {\n",
+    "            \"id\": student_id,\n",
+    "            \"name\": name,\n",
+    "            \"age\": age,\n",
+    "            \"course\": course\n",
+    "        }\n",
+    "\n",
+    "        self.students.append(student)\n",
+    "        print(\"Student added successfully\")\n",
+    "\n",
+    "    def update_student(self):\n",
+    "        student_id = input(\"Enter Student ID: \")\n",
+    "\n",
+    "        for student in self.students:\n",
+    "            if student[\"id\"] == student_id:\n",
+    "\n",
+    "                student[\"name\"] = input(\"Enter new name: \")\n",
+    "                student[\"age\"] = input(\"Enter new age: \")\n",
+    "                student[\"course\"] = input(\"Enter new course: \")\n",
+    "\n",
+    "                print(\"Student updated successfully\")\n",
+    "                break\n",
+    "        else:\n",
+    "            print(\"Student ID not found\")\n",
+    "\n",
+    "    def view_students(self):\n",
+    "        for student in self.students:\n",
+    "            print(\"ID:\", student[\"id\"])\n",
+    "            print(\"Name:\", student[\"name\"])\n",
+    "            print(\"Age:\", student[\"age\"])\n",
+    "            print(\"Course:\", student[\"course\"])\n",
+    "\n",
+    "\n",
+    "sms = StudentManagementSystem()\n",
+    "\n",
+    "while True:\n",
+    "\n",
+    "    print(\"\\n1. Add Student\")\n",
+    "    print(\"2. Update Student\")\n",
+    "    print(\"3. View All Students\")\n",
+    "    print(\"4. Exit\")\n",
+    "\n",
+    "    choice = input(\"Enter your choice: \")\n",
+    "\n",
+    "    if choice == \"1\":\n",
+    "        sms.add_student()\n",
+    "\n",
+    "    elif choice == \"2\":\n",
+    "        sms.update_student()\n",
+    "\n",
+    "    elif choice == \"3\":\n",
+    "        sms.view_students()\n",
+    "\n",
+    "    elif choice == \"4\":\n",
+    "        print(\"Program ended\")\n",
+    "        break\n",
+    "\n",
+    "    else:\n",
+    "        print(\"Invalid choice\")\n",
+    "\n",
+    "\n",
+    "\n",
+    "\n",
+    "\n",
+    "\n",
+    "        -"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "e593d983-a4c9-4064-82ba-40b2df598260",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.14.6"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
